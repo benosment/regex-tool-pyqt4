@@ -6,6 +6,7 @@
 from PyQt4.QtGui import QSyntaxHighlighter, QTextCharFormat, QFont
 from PyQt4.QtCore import Qt, QRegExp
 
+
 class RegexHighlighter(QSyntaxHighlighter):
     def __init__(self, widget):
         QSyntaxHighlighter.__init__(self, widget)
@@ -37,4 +38,3 @@ class RegexHighlighter(QSyntaxHighlighter):
             if length == 0:
                 pos += 1
             pos = self.regex.indexIn(text, pos + length)
-

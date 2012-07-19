@@ -4,9 +4,9 @@
 # Sun Jul 15 08:41:39 2012
 
 import sys
-import re
 from PyQt4 import QtGui, QtCore
 from regexhighlighter import RegexHighlighter
+
 
 class UI(QtGui.QMainWindow):
     def __init__(self):
@@ -36,7 +36,7 @@ class UI(QtGui.QMainWindow):
 
         # add main elements
         self.box = Box(self)
-        self.box.setGeometry(QtCore.QRect(0,0,800,500))
+        self.box.setGeometry(QtCore.QRect(0, 0, 800, 500))
         self.setCentralWidget(self.box)
 
     def center(self):
@@ -45,7 +45,7 @@ class UI(QtGui.QMainWindow):
         self.move((screen.width() - size.width()) / 2,
                   (screen.height() - size.height()) / 2)
 
-# TODO split to a new file? 
+
 class Box(QtGui.QFrame):
     def __init__(self, parent):
         QtGui.QFrame.__init__(self, parent)
@@ -70,4 +70,3 @@ if __name__ == '__main__':
     ui = UI()
     ui.show()
     sys.exit(app.exec_())
-
