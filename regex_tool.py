@@ -35,9 +35,9 @@ class UI(QtGui.QMainWindow):
         fileMenu.addAction(exitAction)
 
         # add main elements
-        self.grid = Grid(self)
-        self.grid.setGeometry(QtCore.QRect(0,0,800,500))
-        self.setCentralWidget(self.grid)
+        self.box = Box(self)
+        self.box.setGeometry(QtCore.QRect(0,0,800,500))
+        self.setCentralWidget(self.box)
 
     def center(self):
         screen = QtGui.QDesktopWidget().screenGeometry()
@@ -46,18 +46,18 @@ class UI(QtGui.QMainWindow):
                   (screen.height() - size.height()) / 2)
 
 # TODO split to a new file? 
-class Grid(QtGui.QFrame):
+class Box(QtGui.QFrame):
     def __init__(self, parent):
         QtGui.QFrame.__init__(self, parent)
-        grid = QtGui.QGridLayout()
-        grid.addWidget(QtGui.QLabel('<b>Text</b>'), 1, 0)
+        box = QtGui.QVBoxLayout()
+        box.addWidget(QtGui.QLabel('<b>Text</b>'))
         self.textbox = QtGui.QTextEdit(self)
-        grid.addWidget(self.textbox, 2, 0, 2, 0)
-        grid.addWidget(QtGui.QLabel('<b>Regular Expression</b>'), 6, 0)
+        box.addWidget(self.textbox)
+        box.addWidget(QtGui.QLabel('<b>Regular Expression</b>'))
         self.regex_box = QtGui.QTextEdit(self)
         self.regex_box.textChanged.connect(self.textChanged)
-        grid.addWidget(self.regex_box, 7, 0, 2, 0)
-        self.setLayout(grid)
+        box.addWidget(self.regex_box)
+        self.setLayout(box)
         self.highlighter = RegexHighlighter(self.textbox.document())
 
     def textChanged(self):
